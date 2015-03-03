@@ -1,0 +1,5 @@
+*.dll
+*.exe
+*.o
+Thumbs.db
+.DS_Store
