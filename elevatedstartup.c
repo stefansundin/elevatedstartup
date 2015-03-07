@@ -71,7 +71,6 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance, char *szCmdLine, in
     return 0;
   }
 
-
   // Note: this can be updated to SHGetKnownFolderPath when cygwin mingw becomes more recent
   int res = SHGetFolderPath(NULL, CSIDL_PROGRAMS, NULL, SHGFP_TYPE_CURRENT, startup_path);
   if (FAILED(res)) {
@@ -80,6 +79,12 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance, char *szCmdLine, in
   }
   wcscat(startup_path, L"\\ElevatedStartup\\");
   // DBG("startup_path: %s", startup_path);
+
+  // Create directory
+  res = CreateDirectory(startup_path, NULL);
+  if (res == 0 && GetLastError() != ERROR_ALREADY_EXISTS) {
+    Error(L"CreateDirectory()", L"Could not create directory for elevated startup.", GetLastError());
+  }
 
   if (start) {
     wcscat(startup_path, L"*");
