@@ -18,6 +18,7 @@
 #include <shlwapi.h>
 #include <commctrl.h>
 #include <windowsx.h>
+#include <shlobj.h>
 
 // App
 #define APP_NAME            L"ElevatedStartup"
@@ -70,20 +71,14 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance, char *szCmdLine, in
     return 0;
   }
 
-  HKEY key;
-  DWORD len = sizeof(startup_path);
-  int error = RegOpenKeyEx(HKEY_CURRENT_USER, L"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders", 0, KEY_QUERY_VALUE, &key);
-  if (error == ERROR_FILE_NOT_FOUND) {
-    Error(L"RegOpenKeyEx()", L"Could not locate the startup directory.", error);
+
+  // Note: this can be updated to SHGetKnownFolderPath when cygwin mingw becomes more recent
+  int res = SHGetFolderPath(NULL, CSIDL_PROGRAMS, NULL, SHGFP_TYPE_CURRENT, startup_path);
+  if (FAILED(res)) {
+    Error(L"SHGetFolderPath()", L"Could not get path to start menu.", GetLastError());
     return 1;
   }
-  error = RegQueryValueEx(key, L"Startup", NULL, NULL, (LPBYTE)startup_path, &len);
-  if (error == ERROR_FILE_NOT_FOUND) {
-    Error(L"RegQueryValueEx()", L"Could not locate the startup directory.", error);
-    return 1;
-  }
-  RegCloseKey(key);
-  wcscat(startup_path, L"\\Elevated\\");
+  wcscat(startup_path, L"\\ElevatedStartup\\");
   // DBG("startup_path: %s", startup_path);
 
   if (start) {
