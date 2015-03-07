@@ -15,8 +15,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
-#include <shlwapi.h>
-#include <commctrl.h>
 #include <windowsx.h>
 #include <shlobj.h>
 
@@ -93,6 +91,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance, char *szCmdLine, in
 
   // Start the programs
   if (start) {
+    int startup_path_length = wcslen(startup_path);
     wcscat(startup_path, L"*");
 
     WIN32_FIND_DATA ffd;
@@ -107,9 +106,9 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance, char *szCmdLine, in
         continue;
       }
 
-      PathRemoveFileSpec(startup_path);
-      wcscat(startup_path, L"\\");
+      startup_path[startup_path_length] = '\0';
       wcscat(startup_path, ffd.cFileName);
+      // DBG("startup file: %s", startup_path);
 
       int ret = (INT_PTR) ShellExecute(NULL, L"open", startup_path, NULL, NULL, SW_SHOWNORMAL);
       if (ret <= 32) {
