@@ -47,20 +47,24 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance, char *szCmdLine, in
     start = 1;
   }
 
-  // Check if elevated if in >= Vista
-  short elevated = 0;
+  // Check if < Vista
   OSVERSIONINFO vi = { sizeof(OSVERSIONINFO) };
   GetVersionEx(&vi);
-  short vista = (vi.dwMajorVersion >= 6);
-  if (vista) {
-    HANDLE token;
-    TOKEN_ELEVATION elevation;
-    DWORD len;
-    if (OpenProcessToken(GetCurrentProcess(),TOKEN_READ,&token) && GetTokenInformation(token,TokenElevation,&elevation,sizeof(elevation),&len)) {
-      elevated = elevation.TokenIsElevated;
-    }
+  if (vi.dwMajorVersion < 6) {
+    MessageBox(NULL, L"You need to run at least Windows Vista to use this program. Sorry!", APP_NAME L" " APP_VERSION, MB_ICONERROR|MB_OK);
+    return 1;
   }
 
+  // Check if elevated
+  short elevated = 0;
+  HANDLE token;
+  TOKEN_ELEVATION elevation;
+  DWORD len;
+  if (OpenProcessToken(GetCurrentProcess(),TOKEN_READ,&token) && GetTokenInformation(token,TokenElevation,&elevation,sizeof(elevation),&len)) {
+    elevated = elevation.TokenIsElevated;
+  }
+
+  // Elevate if needed
   if (start && !elevated) {
     wchar_t path[MAX_PATH];
     GetModuleFileName(NULL, path, ARRAY_SIZE(path));
@@ -71,13 +75,14 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance, char *szCmdLine, in
     return 0;
   }
 
+  // Get path to start menu
   // Note: this can be updated to SHGetKnownFolderPath when cygwin mingw becomes more recent
   int res = SHGetFolderPath(NULL, CSIDL_PROGRAMS, NULL, SHGFP_TYPE_CURRENT, startup_path);
   if (FAILED(res)) {
     Error(L"SHGetFolderPath()", L"Could not get path to start menu.", GetLastError());
     return 1;
   }
-  wcscat(startup_path, L"\\ElevatedStartup\\");
+  wcscat(startup_path, L"\\" APP_NAME "\\");
   // DBG("startup_path: %s", startup_path);
 
   // Create directory
@@ -86,6 +91,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance, char *szCmdLine, in
     Error(L"CreateDirectory()", L"Could not create directory for elevated startup.", GetLastError());
   }
 
+  // Start the programs
   if (start) {
     wcscat(startup_path, L"*");
 
@@ -121,6 +127,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance, char *szCmdLine, in
     return 0;
   }
 
+  // We only get here if run without -start
   g_hwnd = CreateDialog(g_hinst, MAKEINTRESOURCE(IDD_DIALOG), NULL, DialogProc);
   if (g_hwnd == NULL) {
     Error(L"CreateDialog()", L"", GetLastError());
