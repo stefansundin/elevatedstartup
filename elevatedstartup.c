@@ -19,7 +19,7 @@
 #include <shlobj.h>
 
 // App
-#define APP_NAME            L"ElevatedStartup"
+#define APP_NAME            L"Elevated Startup"
 #define APP_VERSION         "0.1"
 
 // Boring stuff
