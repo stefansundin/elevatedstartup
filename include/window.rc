@@ -14,7 +14,7 @@
 // Dialog resources
 //
 LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
-IDD_DIALOG DIALOG 0, 0, 185, 75
+IDD_DIALOG DIALOG 0, 0, 185, 73
 STYLE DS_3DLOOK | DS_CENTER | DS_MODALFRAME | DS_SHELLFONT | WS_CAPTION | WS_VISIBLE | WS_GROUP | WS_TABSTOP | WS_POPUP | WS_SYSMENU
 EXSTYLE WS_EX_WINDOWEDGE
 CAPTION "Elevated Startup"
@@ -22,6 +22,6 @@ FONT 8, "Ms Shell Dlg"
 {
     PUSHBUTTON      "Open Elevated Startup Directory", IDOPENDIR, 5, 18, 175, 14, 0, WS_EX_LEFT
     PUSHBUTTON      "Close", IDCANCEL, 5, 36, 175, 14, 0, WS_EX_LEFT
-    CONTROL         "<a href=""https://stefansundin.github.io/elevatedstartup"">https://stefansundin.github.io/elevatedstartup</a>", IDC_STATIC, "SysLink", 0x50020000, 19, 55, 150, 10, 0x00000000
+    CONTROL         "<a href=""https://stefansundin.github.io/elevatedstartup"">https://stefansundin.github.io/elevatedstartup</a>", IDC_STATIC, "SysLink", 0x50020000, 19, 57, 150, 10, 0x00000000
     AUTOCHECKBOX    "Enabled", IDENABLED, 5, 5, 175, 8, 0, WS_EX_LEFT
 }
