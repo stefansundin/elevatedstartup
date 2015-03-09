@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="https://stefansundin.github.io/elevatedstartup/" target="_blank">
+  <title>Elevated Startup</title>
+
+  <meta charset="utf-8">
+  <meta name="author" content="Stefan Sundin">
+  <meta name="description" content="Elevated Startup - Autostart programs with administrator privileges (Windows only).">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <link rel="icon" href="img/icon32.png">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="alternate" href="https://github.com/stefansundin/elevatedstartup/releases.atom" title="Elevated Startup release feed" />
+  <link rel="license" href="https://www.gnu.org/licenses/gpl-3.0.html" title="GNU GPL v3 or later">
+
+  <meta property="og:site_name" content="Elevated Startup">
+  <meta property="og:title" content="Elevated Startup">
+  <meta property="og:description" content="Elevated Startup makes it easy to autostart programs with administrator privileges.">
+  <meta property="og:url" content="https://stefansundin.github.io/elevatedstartup/">
+  <meta property="og:image" content="https://stefansundin.github.io/elevatedstartup/img/icon256.png">
+</head>
+<body>
+  <header>
+    <img src="img/icon128.png" width="128" height="128" alt="Elevated Startup Icon" itemprop="image">
+    <hgroup>
+      <h1 itemprop="name">Elevated Startup</h1>
+      <h2 itemprop="description">Easily drag windows when pressing the alt key</h2>
+    </hgroup>
+  </header>
+
+  <div class="text-center" id="os-warning" style="display:none;">
+    <h3><b>Note:</b> Elevated Startup is a Windows only application!</h3>
+  </div>
+  <script>
+  if (navigator.platform.indexOf('Win') === -1) {
+    document.getElementById('os-warning').style.display = 'block';
+  }
+  </script>
+
+
+  <div class="topbar buttons">
+    <a target="_self" class="btn btn-lg btn-primary" href="https://github.com/stefansundin/elevatedstartup/releases/download/v0.1/ElevatedStartup.exe" track="download"><span class="glyphicon glyphicon-download-alt"></span> Download v0.1</a>
+    <a class="btn btn-lg btn-default" href="https://github.com/stefansundin/elevatedstartup/releases"><span class="glyphicon glyphicon-list"></span> Changelog</a>
+    <a class="btn btn-lg btn-default" href="https://github.com/stefansundin/elevatedstartup"><span class="glyphicon glyphicon-list-alt"></span> Source code</a>
+    <a class="btn btn-lg btn-default" href="https://www.reddit.com/r/stefansundin"><span class="glyphicon glyphicon-comment"></span> Discuss</a>
+  </div>
+
+  <div class="container">
+    <h2>Donate</h2>
+
+    <p>Elevated Startup is free software and a one-man endeavor. If you find it useful, please make a donation.</p>
+
+    <form method="post" action="https://www.paypal.com/cgi-bin/webscr" track="donate">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="KYMVEK692RF5Q">
+      <input type="hidden" name="item_number" value="Elevated Startup">
+      <input type="hidden" name="return" value="https://stefansundin.github.io/thx">
+      <input type="hidden" name="cbt" value="Learn why you just became awesome">
+      <div class="input-group col-sm-5">
+        <input class="form-control" type="text" name="amount" id="amount" value="$5.00" placeholder="Amount">
+        <span class="input-group-btn">
+          <input class="btn btn-success" type="submit" value="Donate with PayPal">
+        </span>
+      </div>
+    </form>
+
+    <p>Or you can send Bitcoin to: <tt>1EhDUbc5MjC6JavC6idKiTCxnqSxY2sbTX</tt> (<a href="../img/btc-qr.png">QR code</a>)</p>
+
+
+    <h2>What is Elevated Startup?</h2>
+
+    <p>Windows does not have a good way to autostart programs with administrator privileges. This program gives you a new directory in the start menu where you can put shortcuts in, which are started with administrator privileges when you login.</p>
+
+    <p>Depending on your UAC settings, you might still get one UAC prompt. On startup, Elevated Startup first relaunches itself with administrator privileges (this is where you might get a UAC prompt), after which it iterates and starts the items inside the directory.</p>
+
+
+    <h2>News</h2>
+
+    <p><b>2015-03-08:</b> First release.</p>
+
+    <p>For an RSS feed with new releases, use <a href="https://github.com/stefansundin/elevatedstartup/releases.atom">the GitHub release feed</a>.</p>
+
+
+    <h2>Support</h2>
+
+    <p>You can report issues on <a href="https://github.com/stefansundin/elevatedstartup/issues">the GitHub page</a> or ask questions <a href="https://www.reddit.com/r/stefansundin">on my subreddit</a>.</p>
+
+    <p>When reporting bugs, please specify what version of Windows you are using, and be sure to include any error messages you might see.</p>
+
+
+    <h2>License</h2>
+
+    <p>Elevated Startup is free software and licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU GPL v3</a>. Get <a href="https://github.com/stefansundin/elevatedstartup">the source code</a> on GitHub.</p>
+
+    <p>You may redistribute Elevated Startup on your own website, but please provide a link to this website on the same page. Please do not bundle Elevated Startup together with toolbars or other annoying adware, or otherwise degrade the experience.</p>
+
+
+    <h2>Credits</h2>
+
+    <p>Made by Stefan Sundin.</p>
+
+    <p>You can <a href="https://stefansundin.github.io/">browse my other projects</a>, or <a href="https://stefansundin.com/">visit my personal website</a>.</p>
+
+
+    <div class="share">
+      <iframe src="https://mdo.github.io/github-buttons/github-btn.html?user=stefansundin&amp;repo=elevatedstartup&amp;type=watch&amp;count=true&amp;size=large" allowtransparency="true" frameborder="0" scrolling="0" width="155" height="30"></iframe>
+    </div>
+  </div>
+
+  <script src="https://stefansundin.github.io/js/https.js"></script>
+  <script src="../js/ga.js"></script>
+</body>
+</html>
