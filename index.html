@@ -10,18 +10,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+  <meta property="og:site_name" content="Elevated Startup">
+  <meta property="og:title" content="Elevated Startup">
+  <meta property="og:description" content="Elevated Startup makes it easy to autostart programs with administrator privileges.">
+  <meta property="og:url" content="https://stefansundin.github.io/elevatedstartup/">
+  <meta property="og:image" content="https://stefansundin.github.io/elevatedstartup/img/icon256.png">
+
   <link rel="icon" href="img/icon32.png">
   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="../css/main.css">
   <link rel="alternate" type="application/atom+xml" href="https://github.com/stefansundin/elevatedstartup/releases.atom" title="Elevated Startup release feed">
   <link rel="license" href="https://www.gnu.org/licenses/gpl-3.0.html" title="GNU GPL v3 or later">
-
-  <meta property="og:site_name" content="Elevated Startup">
-  <meta property="og:title" content="Elevated Startup">
-  <meta property="og:description" content="Elevated Startup makes it easy to autostart programs with administrator privileges.">
-  <meta property="og:url" content="https://stefansundin.github.io/elevatedstartup/">
-  <meta property="og:image" content="https://stefansundin.github.io/elevatedstartup/img/icon256.png">
+  <script src="https://stefansundin.github.io/js/https.js"></script>
 </head>
 <body>
   <header>
@@ -33,7 +34,7 @@
   </header>
 
   <div class="text-center" id="os-warning" style="display:none;">
-    <h3><b>Note:</b> Elevated Startup is a Windows only application!</h3>
+    <h3><strong>Note:</strong> Elevated Startup is a Windows only application!</h3>
   </div>
   <script>
   if (navigator.platform.indexOf('Win') === -1) {
@@ -50,9 +51,9 @@
   </div>
 
   <div class="container">
-    <h2>Donate</h2>
+    <h2 id="donate">Donate</h2>
 
-    <p>Elevated Startup is free software and a one-man endeavor. If you find it useful, please make a donation.</p>
+    <p>Elevated Startup is free software and a one-man endeavor. If you find it useful, please make a donation. I greatly appreciate any support!</p>
 
     <form method="post" action="https://www.paypal.com/cgi-bin/webscr" track="donate">
       <input type="hidden" name="cmd" value="_xclick">
@@ -68,12 +69,17 @@
       </div>
     </form>
 
-    <p>Or you can send Bitcoin to: <tt>1EhDUbc5MjC6JavC6idKiTCxnqSxY2sbTX</tt> (<a href="../img/btc-qr.png">QR code</a>)</p>
+    <p><small><a class="expander" expand="donation-options">Show other donation options: Bitcoin, Square Cash.</a></small></p>
+    <div class="expandable" id="donation-options">
+      <p>Other donation options:</p>
+      <ul>
+        <li>Bitcoin: <tt>1EhDUbc5MjC6JavC6idKiTCxnqSxY2sbTX</tt> (<a href="../img/btc-qr.png">QR code</a>)</li>
+        <li>Square Cash: <a fubar>squarEStefansundinCom</a></li>
+      </ul>
+    </div>
 
-    <p>You can also send Square Cash to: <a>squarEStefansundinCom</a></p>
 
-
-    <h2>What is Elevated Startup?</h2>
+    <h2 id="intro">What is Elevated Startup?</h2>
 
     <p>Windows does not have a good way to autostart programs with administrator privileges. This program gives you a new directory in the start menu where you can put shortcuts in, which are started with administrator privileges when you login.</p>
 
@@ -82,28 +88,28 @@
     <p>The download link above is a 64-bit executable. If you need a 32-bit version, <a href="https://github.com/stefansundin/elevatedstartup/releases/download/v0.1/ElevatedStartup-32bit.exe" track="download">download it here</a>.</p>
 
 
-    <h2>News</h2>
+    <h2 id="news">News</h2>
 
     <p><b>2015-03-08:</b> First release.</p>
 
     <p>For an RSS feed with new releases, use <a href="https://github.com/stefansundin/elevatedstartup/releases.atom">the GitHub release feed</a>.</p>
 
 
-    <h2>Support</h2>
+    <h2 id="support">Support</h2>
 
     <p>You can report issues on <a href="https://github.com/stefansundin/elevatedstartup/issues">the GitHub page</a> or ask questions <a href="https://www.reddit.com/r/stefansundin">on my subreddit</a>.</p>
 
     <p>When reporting bugs, please specify what version of Windows you are using, and be sure to include any error messages you might see.</p>
 
 
-    <h2>License</h2>
+    <h2 id="license">License</h2>
 
     <p>Elevated Startup is free software and licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU GPL v3</a>. Get <a href="https://github.com/stefansundin/elevatedstartup">the source code</a> on GitHub.</p>
 
     <p>You may redistribute Elevated Startup on your own website, but please provide a link to this website on the same page. Please do not bundle Elevated Startup together with toolbars or other annoying adware, or otherwise degrade the experience.</p>
 
 
-    <h2>Credits</h2>
+    <h2 id="credits">Credits</h2>
 
     <p>Made by Stefan Sundin.</p>
 
@@ -115,8 +121,8 @@
     </div>
   </div>
 
-  <script src="https://stefansundin.github.io/js/https.js"></script>
   <script src="../js/ga.js"></script>
   <script src="../js/fubar.js"></script>
+  <script src="../js/main.js"></script>
 </body>
 </html>
