@@ -7,5 +7,5 @@
 
 Filename | Download Count
 -------- | --------------
-ElevatedStartup-32bit.exe | 8
-ElevatedStartup.exe | 7
+ElevatedStartup-32bit.exe | 101
+ElevatedStartup.exe | 350
