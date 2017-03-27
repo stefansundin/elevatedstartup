@@ -67,17 +67,18 @@ h2 {
   margin: 4px 3px;
 }
 
-.input-group {
-  margin-bottom: 15px;
+.form-inline .input-group {
+  margin-right: 5px;
+}
+
+.expander {
+  display: none;
+  margin-top: 15px;
 }
 
 .share {
   text-align: center;
   margin: 80px 0 45px;
-}
-
-.expander {
-  display: none;
 }
   </style>
 </head>
@@ -110,27 +111,30 @@ h2 {
 
     <p>Elevated Startup is free software and a one-man endeavor. If you find it useful, please make a donation. I greatly appreciate any support!</p>
 
-    <form method="post" action="https://www.paypal.com/cgi-bin/webscr" target="_blank" track="donate">
+    <form method="post" action="https://www.paypal.com/cgi-bin/webscr" track="donate" target="_blank" class="form-inline">
       <input type="hidden" name="cmd" value="_xclick">
       <input type="hidden" name="business" value="KYMVEK692RF5Q">
+      <input type="hidden" name="item_name" value="Elevated Startup">
       <input type="hidden" name="item_number" value="Elevated Startup">
+      <input type="hidden" name="no_shipping" value="1">
       <input type="hidden" name="return" value="https://stefansundin.github.io/thx">
       <input type="hidden" name="cbt" value="Learn why you just became awesome">
-      <div class="input-group col-sm-5">
-        <input class="form-control" type="text" name="amount" id="amount" value="$5.00" placeholder="Amount">
-        <span class="input-group-btn">
-          <input class="btn btn-success" type="submit" value="Donate with PayPal">
-        </span>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">$</div>
+          <input type="hidden" name="currency_code" value="USD">
+          <input class="form-control" type="text" name="amount" value="5.00" pattern="\d+\.?\d*" placeholder="Amount">
+        </div>
       </div>
+      <input class="btn btn-success" type="submit" value="Donate with PayPal">
     </form>
 
-    <p><small><a class="expander" expand="donation-options">Show other donation options: Bitcoin, Square Cash, ChangeTip.</a></small></p>
+    <p><small><a class="expander" expand="donation-options">Show other donation options: Bitcoin, Square Cash.</a></small></p>
     <div id="donation-options">
       <p>Other donation options:</p>
       <ul>
         <li>Bitcoin: <tt>1EhDUbc5MjC6JavC6idKiTCxnqSxY2sbTX</tt> (<a href="../img/btc-qr.png">QR code</a>)</li>
         <li>Square Cash: <a href="https://cash.me/$StefanSundin">$StefanSundin</a></li>
-        <li>ChangeTip: <a href="https://www.changetip.com/tipme/stefansundin">stefansundin</a></li>
       </ul>
       <p>Contact me at <a fubar>stefaNStefansundinCom</a> if none of the above work.</p>
     </div>
